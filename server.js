@@ -35,7 +35,7 @@ app.get("/tables", function(req, res) {
 // /reserve POST
 app.post("/api/new", function(req, res) {
   var newtable = req.body;
-  newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
+  newtable.name = newtable.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newtable);
 
