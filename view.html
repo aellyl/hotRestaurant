@@ -16,7 +16,8 @@
       <h1>Hot Restaurants</h1>
       <h3>We only have 5 tables! Book your seat before they all are gone!</h3>
       <hr>
-      <a href="/add"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Add New Character</button></a>
+      <a href="/reserve"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span>Reserve a Table</button></a>
+      <a href="/tables"><button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-plus"></span>View Reservations</button></a>
     </div>
     <div class="row">
 
@@ -24,30 +25,20 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Character Search</strong></h3>
+            <h3 class="panel-title"><strong>Tables</strong></h3>
           </div>
           <div class="panel-body">
-            <input type="text" id="character-search" class="form-control">
-            <br>
-            <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-search"></span> Search Your Feelings. You know it is true.</button>
-
+            <div class="tables">
             </div>
           </div>
         </div>
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Tables</strong></h3>
+            <h3 class="panel-title"><strong>Reservations</strong></h3>
           </div>
           <div class="panel-body">
-            <div class="well">
-              <h2 id="name"></h2>
-              <div id="tables">
-                <h3><strong>Name:</strong> <span id="name"></span></h3>
-                <h3><strong>Email:</strong> <span id="email"></span></h3>
-                <h3><strong>Unique ID:</strong> <span id="id"></span></h3>
-              </div>
+            <div class="reservations">
             </div>
           </div>
         </div>
@@ -72,6 +63,15 @@
         }
         $("#tables").html(reserv);
       });
+      $.get("/api/waitlist", function(data){
+        var wait;
+        if (data){
+          for (var i = 0; i < data.length; i++){
+            wait = "<h2><span class=\"label label-primary\">" + (i+1) + "</span> | " + data[i].name + "</h2>";
+          }
+        }
+
+      })
     });
   </script>
 </body>
