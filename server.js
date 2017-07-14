@@ -17,7 +17,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Star Wars Characters (DATA)
 // =============================================================
-var reservations = [];
+var reservations = [{name: "chris", }];
 var waitlist = [];
 
 // Routes
@@ -29,7 +29,7 @@ app.get("/", function(req, res) {
 });
 
 // /tables Get
-app.get("/", function(req, res) {
+app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
 });
 
