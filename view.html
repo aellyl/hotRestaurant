@@ -35,14 +35,17 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Reservations</strong></h3>
+            <h3 class="panel-title"><strong>Waitlist</strong></h3>
           </div>
           <div class="panel-body">
-            <div class="reservations">
+            <div class="waitlist">
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div>
+        <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List Link</a>
     </div>
   </div>
 
@@ -54,14 +57,13 @@
         if (data) {
           for(var i = 0; i < data.length; i++){
             reserv = "<h2><span class=\"label label-primary\">" + (i+1) + "</span> | " + data[i].name + "</h2>";
-
+            $(".tables").html(reserv);
           }
         }
         else {
-          $("#name").text("The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
+          $("#name").text("No Table for you.");
         }
-        $("#tables").html(reserv);
+        $(".tables").html(reserv);
       });
       $.get("/api/waitlist", function(data){
         var wait;
