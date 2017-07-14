@@ -17,7 +17,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Star Wars Characters (DATA)
 // =============================================================
-var reservations = [{name: "chris", }];
+var reservations = [];
 var waitlist = [];
 
 // Routes
