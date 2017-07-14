@@ -32,10 +32,20 @@ app.get("/", function(req, res) {
 app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
 });
-
 // /reserve POST
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+app.post("/api/new", function(req, res) {
+  var newtable = req.body;
+  newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newtable);
+
+  reservations.push(newtable);
+
+  res.json(newtable);
+});
+
+app.get("/reserve",function(req,res){
+  res.sendFile(path.join(__dirname, "add.html"));
 });
 
 // api/tables get
@@ -48,3 +58,8 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
 });
 
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
+});
