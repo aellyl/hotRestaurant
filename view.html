@@ -57,20 +57,21 @@
         if (data) {
           for(var i = 0; i < data.length; i++){
             reserv = "<h2><span class=\"label label-primary\">" + (i+1) + "</span> | " + data[i].name + "</h2>";
-            $(".tables").html(reserv);
+            $(".tables").append(reserv);
           }
         }
         else {
           $("#name").text("No Table for you.");
         }
-        $(".tables").html(reserv);
+        //$(".tables").html(reserv);
       });
       $.get("/api/waitlist", function(data){
         var wait;
         if (data){
           for (var i = 0; i < data.length; i++){
             wait = "<h2><span class=\"label label-primary\">" + (i+1) + "</span> | " + data[i].name + "</h2>";
-          }
+          $(".waitlist").append(wait);
+        }
         }
 
       })
