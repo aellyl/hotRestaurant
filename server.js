@@ -38,10 +38,15 @@ app.post("/api/new", function(req, res) {
   newtable.name = newtable.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newtable);
-
-  reservations.push(newtable);
-
-  res.json(newtable);
+  if (reservations.length < 5)
+  {
+    reservations.push(newtable);
+    res.send(true);
+  }
+  else{
+    waitlist.push(newtable);
+    res.send(false);
+  }
 });
 
 app.get("/reserve",function(req,res){
