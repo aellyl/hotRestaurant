@@ -29,7 +29,7 @@ app.get("/", function(req, res) {
 });
 
 // /tables Get
-app.get("/", function(req, res) {
+app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
 });
 // /reserve POST
@@ -49,13 +49,13 @@ app.get("/reserve",function(req,res){
 });
 
 // api/tables get
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+app.get("api/tables", function(req, res) {
+  res.json(reservations);
 });
 
 // api/waitlist GET
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+app.get("api/waitlist", function(req, res) {
+  res.json(waitlist);
 });
 
 // Starts the server to begin listening
