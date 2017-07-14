@@ -25,7 +25,7 @@ var waitlist = [];
 
 // Homepage
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "home.html"));
 });
 
 // /tables Get
@@ -49,12 +49,12 @@ app.get("/reserve",function(req,res){
 });
 
 // api/tables get
-app.get("api/tables", function(req, res) {
+app.get("/api/tables", function(req, res) {
   res.json(reservations);
 });
 
 // api/waitlist GET
-app.get("api/waitlist", function(req, res) {
+app.get("/api/waitlist", function(req, res) {
   res.json(waitlist);
 });
 
